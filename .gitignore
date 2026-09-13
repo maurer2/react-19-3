@@ -1,0 +1,16 @@
+node_modules
+.DS_Store
+dist
+dist-ssr
+*.local
+.env
+.nitro
+.tanstack
+.wrangler
+.output
+.vinxi
+__unconfig*
+todos.json
+
+# TypeScript build mode writes an incremental cache next to the config.
+*.tsbuildinfo

@@ -1,0 +1,67 @@
+/* layers are added in header in __root.tsx */
+@import 'modern-normalize' layer(reset);
+
+@layer tokens {
+  :root {
+    color-scheme: light dark;
+
+    --color-canvas: light-dark(oklch(98.5% 0.004 265), oklch(19% 0.015 265));
+    --color-text: light-dark(oklch(26% 0.02 265), oklch(94% 0.008 265));
+    --color-accent: light-dark(oklch(52% 0.18 265), oklch(72% 0.15 265));
+
+    --spacing: 1rem;
+
+    --font-sans: system-ui, -apple-system, 'Segoe UI', roboto, sans-serif;
+  }
+}
+
+@layer base {
+  body {
+    inline-size: min(100%, 120ch);
+    margin-inline: auto;
+    padding: var(--spacing);
+
+    background-color: var(--color-canvas);
+    color: var(--color-text);
+    font-family: var(--font-sans);
+    line-height: 1.6;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    line-height: 1.2;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  a {
+    color: var(--color-accent);
+
+    &:where(:hover, :focus-visible) {
+      text-decoration: underline;
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--color-accent);
+      outline-offset: 2px;
+    }
+  }
+}
+
+@layer utilities {
+  .sr-only {
+    clip-path: inset(50%);
+    height: 1px;
+    overflow: hidden;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
+  }
+}

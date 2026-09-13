@@ -1,0 +1,140 @@
+{
+  "$schema": "./node_modules/oxlint/configuration_schema.json",
+  "plugins": [
+    "eslint",
+    "import",
+    "jsx-a11y",
+    "oxc",
+    "promise",
+    "react",
+    // "react-perf",
+    "typescript",
+    "unicorn"
+    // "nextjs",
+    // "node"
+  ],
+  "options": {
+    "typeAware": true,
+    "reportUnusedDisableDirectives": "error",
+    "typeCheck": true,
+    "denyWarnings": true
+  },
+  "env": {
+    "browser": true,
+    "builtin": true
+  },
+  "settings": {
+    "react": {
+      "version": "19"
+    }
+  },
+  "categories": {
+    "correctness": "error",
+    "suspicious": "error",
+    "pedantic": "error",
+    "perf": "warn",
+    "restriction": "warn",
+    "style": "off",
+    "nursery": "off"
+  },
+  "rules": {
+    // eslint
+    "eslint/no-console": "off",
+    "eslint/no-plusplus": "off",
+    "eslint/no-new": "off",
+    "eslint/no-inline-comments": "off",
+    "eslint/no-undefined": "off",
+    "eslint/no-warning-comments": "off",
+    "eslint/max-lines-per-function": [
+      "warn",
+      {
+        "skipComments": true,
+        "skipBlankLines": true,
+        "max": 150
+      }
+    ],
+    "eslint/no-unused-vars": [
+      "error",
+      {
+        "argsIgnorePattern": "^_",
+        "varsIgnorePattern": "^_",
+        "ignoreRestSiblings": true
+      }
+    ],
+    // react
+    "react/react-in-jsx-scope": "off",
+    "react/jsx-filename-extension": "off",
+    "react/forbid-component-props": "off",
+    "react/jsx-no-literals": "off",
+    "react/unsupported-syntax": "warn", // restriction
+    "react/no-deriving-state-in-effects": "warn", // perf
+    // typescript
+    "typescript/consistent-type-imports": "error",
+    "typescript/prefer-readonly-parameter-types": "off",
+    "typescript/promise-function-async": "off",
+    "typescript/strict-boolean-expressions": "off",
+    "typescript/no-deprecated": "warn",
+    "typescript/no-unnecessary-type-conversion": "warn",
+    "typescript/switch-exhaustiveness-check": [
+      "warn",
+      {
+        "considerDefaultExhaustiveForUnions": true
+      }
+    ],
+    // oxc
+    "oxc/no-optional-chaining": "off",
+    "oxc/no-async-await": "off",
+    "oxc/no-rest-spread-properties": "off",
+    // import
+    "import/no-default-export": "off",
+    "import/no-relative-parent-imports": "off",
+    "import/unambiguous": "off",
+    "import/max-dependencies": "off",
+    "import/first": "error",
+    "import/newline-after-import": "error",
+    "import/no-duplicates": "error",
+    "import/consistent-type-specifier-style": ["error", "prefer-top-level-if-only-type-imports"],
+    // needed for side-effect imports: global CSS, test setup, module augmentation.
+    "import/no-unassigned-import": "off",
+    // unicorn
+    "unicorn/prefer-query-selector": "off"
+  },
+  "ignorePatterns": [
+    "__mocks__/**",
+    "coverage/**",
+    "dist/**",
+    ".output/**",
+    ".nitro/**",
+    ".tanstack/**",
+    "**/*.gen.ts"
+  ],
+  "overrides": [
+    // React components and CSS in JS
+    {
+      "files": ["src/**/*.tsx", "src/**/*.styles.ts"],
+      "rules": {
+        "typescript/explicit-function-return-type": "off",
+        "typescript/explicit-module-boundary-types": "off"
+      }
+    },
+    // TanStack Router routes
+    {
+      "files": ["src/routes/**/*.tsx"],
+      "rules": {
+        "react/only-export-components": "off",
+        "react/no-multi-comp": "off",
+        "eslint/no-use-before-define": "off"
+      }
+    },
+    {
+      "files": ["*.config.ts"],
+      "env": {
+        "node": true,
+        "builtin": true
+      },
+      "rules": {
+        "typescript/explicit-function-return-type": "off"
+      }
+    }
+  ]
+}

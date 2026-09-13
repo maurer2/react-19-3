@@ -1,0 +1,20 @@
+allowBuilds:
+  esbuild: true # vite
+  lightningcss: true # vite css
+
+minimumReleaseAge: 10080 # 7 days
+blockExoticSubdeps: true # no git branch as package url
+
+minimumReleaseAgeExclude:
+  - 'react@19.3.0'
+  - 'react-dom@19.3.0'
+  - 'scheduler@0.28.0'
+
+supportedArchitectures:
+  cpu:
+    - arm64
+    - x64
+  os:
+    - darwin
+    - linux
+    - win32
