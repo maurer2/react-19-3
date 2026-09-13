@@ -1,9 +1,11 @@
+const css = String.raw;
+
 export default function ScopedStylingTest() {
   return (
     <div className="test">
       {/* Permitted in React 19+ */}
       <style>
-        {`
+        {css`
           @scope {
             /* scoped to direct parent of style tag, e.g. .test but not other .test classes */
             :scope {
@@ -12,7 +14,7 @@ export default function ScopedStylingTest() {
             }
 
             span {
-              color: red
+              color: red;
             }
           }
         `}

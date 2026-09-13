@@ -159,6 +159,7 @@
         "ricard.postcss", // PostCSS syntax highlighting
         "naumovs.color-highlight", // Highlights CSS color values inline
         "kisstkondoros.csstriggers", // Shows CSS property rendering cost (layout/paint/composite)
+        "styled-components.vscode-styled-components", // CSS highlighting & IntelliSense inside `css` tagged template literals
         // frameworks
         "blazejkustra.react-compiler-marker", // Shows React Compiler success/error markers per component
         // "astro-build.astro-vscode", // Astro framework language support
